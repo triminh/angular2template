@@ -3,25 +3,32 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'my-tutorial',
     template: `
-    <h2>{{title}}</h2>
-    <h3 *ngIf="showLineIf">This ngIf directive line.</h3>
-    <div [ngSwitch]="color">
-        <p *ngSwitchCase="'red'">THis line color is red</p>
-        <p *ngSwitchCase="'blue'">THis line color is blue</p>
-        <p *ngSwitchCase="'green'">THis line color is green</p>
-        <p *ngSwitchDefault>Invalid color</p>
-    </div>
-    <ul>
-        <li *ngFor="let color of colors">{{ color }}</li>
-    </ul>
-    `
+    <h2>{{ title }}</h2>
+    <p [ngClass]="{classOne:cone, classTwo:ctwo}">This ngClass apply style</p>
+    <button (click)="toggle()">Toggle</button>
+    <p [ngStyle]="{'font-style':style, 'font-size':size}">This paragaph will be apply to ngStyle</p>
+    `,
+    styles: [
+        `
+        .classOne {
+            color: yellow;
+        }
+        .classTwo {
+            background-color: black;
+        }
+        `
+    ]
 })
 
-export class TutorialComponent{
-    public showLineIf = false;   
+export class TutorialComponent{   
 
-    public color = "bldsd"; 
-
-    public colors: string[] = ["red", "green", "blue"];
+    public cone = true; 
+    public ctwo = true;
+    public style = "italic";
+    public size = "30px";
+    toggle(){
+        this.cone = !this.cone;
+        this.ctwo = !this.ctwo;
+    }
 }
 
