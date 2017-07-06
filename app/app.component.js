@@ -9,17 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var tutorial_component_1 = require("./tutorial.component");
 var AppComponent = (function () {
     function AppComponent() {
-        //property binding
-        this.title = "TEDU Chanel";
+        this.title = "TEDU Channel";
+        this.agree = 0;
+        this.disgree = 0;
+        this.names = ['Mr A', 'Mr B', 'Mr C', 'Mr D'];
     }
+    AppComponent.prototype.parentVote = function (agree) {
+        if (agree)
+            this.agree++;
+        else
+            this.disgree++;
+    };
+    AppComponent.prototype.changeName = function () {
+        this.tutorialComponent.setName('Change name in Parent');
+    };
     return AppComponent;
 }());
+__decorate([
+    core_1.ViewChild(tutorial_component_1.TutorialComponent),
+    __metadata("design:type", tutorial_component_1.TutorialComponent)
+], AppComponent.prototype, "tutorialComponent", void 0);
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n  <h1>Hello {{ title }}</h1>\n  <my-tutorial></my-tutorial>\n  ",
+        template: "\n  <h1>Helo {{title}}!</h1>\n  <input type=\"text\" #textName (keyup)=\"0\" />\n  <p>Agree number: {{agree}}. Disgree: {{disgree}}</p>\n  <button (click)=\"changeName()\">Change name</button>\n  <my-tutorial *ngFor=\"let person of names\" [name]=\"person\" (onVote)=\"parentVote($event)\"></my-tutorial>\n  ",
     }),
     __metadata("design:paramtypes", [])
 ], AppComponent);
