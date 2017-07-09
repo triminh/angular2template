@@ -11,19 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = "TEDU Channel";
-        this.today = Date.now();
-        this.percentNumber = 1.3495;
-        this.e = 2.718281828459045;
-        this.object = { foo: 'bar', baz: 'qux', nested: { xyz: 3, numbers: [1, 2, 3, 4, 5] } };
-        this.collection = ['a', 'b', 'c', 'd'];
     }
+    AppComponent.prototype.onSubmit = function (value) {
+        console.log(value);
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n  <h1>Helo {{title | uppercase}}!</h1>\n  <p>Date today: {{ today | date:'shortDate' }}</p>\n  <p>Percent: {{ percentNumber | percent }}</p>\n  \n  <pre>{{ object | json }}</pre>\n  <p>2 power 10: {{ 2 | exponentialStrength:3 }}</p>\n  <ul>\n    <li *ngFor=\"let i of collection | slice:1:3\">{{i}}</li>\n  </ul>\n  <my-tutorial></my-tutorial>\n  ",
+        templateUrl: 'app/app.component.html',
     }),
     __metadata("design:paramtypes", [])
 ], AppComponent);
