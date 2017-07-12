@@ -9,18 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
+var employee_service_1 = require("./services/employee.service");
+var EmployeeListComponent = (function () {
+    function EmployeeListComponent(employeeService) {
+        this.employeeService = employeeService;
     }
-    return AppComponent;
+    EmployeeListComponent.prototype.ngOnInit = function () {
+        this.employees = this.employeeService.getList();
+    };
+    return EmployeeListComponent;
 }());
-AppComponent = __decorate([
+EmployeeListComponent = __decorate([
     core_1.Component({
-        selector: 'my-app',
-        templateUrl: 'app/app.component.html',
-        styleUrls: ['app/app.component.css']
+        selector: 'employee-list',
+        templateUrl: './app/employee.component.html',
+        providers: [employee_service_1.EmployeeService]
     }),
-    __metadata("design:paramtypes", [])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+    __metadata("design:paramtypes", [employee_service_1.EmployeeService])
+], EmployeeListComponent);
+exports.EmployeeListComponent = EmployeeListComponent;
+//# sourceMappingURL=employee.component.js.map

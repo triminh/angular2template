@@ -9,18 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
+var EmployeeService = (function () {
+    function EmployeeService() {
     }
-    return AppComponent;
+    EmployeeService.prototype.getList = function () {
+        var employees = [
+            { Id: 1, Name: "Nguyen Van Tuan" },
+            { Id: 2, Name: "Nguyen Thi Huong" },
+            { Id: 3, Name: "Tran Van Hai" },
+        ];
+        return employees;
+    };
+    return EmployeeService;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        templateUrl: 'app/app.component.html',
-        styleUrls: ['app/app.component.css']
-    }),
+EmployeeService = __decorate([
+    core_1.Injectable(),
     __metadata("design:paramtypes", [])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+], EmployeeService);
+exports.EmployeeService = EmployeeService;
+//# sourceMappingURL=employee.service.js.map
