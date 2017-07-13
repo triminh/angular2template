@@ -9,22 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/map");
 var EmployeeService = (function () {
-    function EmployeeService() {
+    function EmployeeService(_http) {
+        this._http = _http;
+        this.apiUrl = "http://596790d9c2944b0011620950.mockapi.io/employees";
     }
-    EmployeeService.prototype.getList = function () {
-        var employees = [
-            { Id: 1, Name: "Nguyen Van Tuan" },
-            { Id: 2, Name: "Nguyen Thi Huong" },
-            { Id: 3, Name: "Tran Van Hai" },
-        ];
-        return employees;
+    EmployeeService.prototype.GetList = function () {
+        return this._http.get(this.apiUrl).map(function (response) { return response.json(); });
     };
     return EmployeeService;
 }());
 EmployeeService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [http_1.Http])
 ], EmployeeService);
 exports.EmployeeService = EmployeeService;
 //# sourceMappingURL=employee.service.js.map

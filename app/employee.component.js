@@ -15,7 +15,12 @@ var EmployeeListComponent = (function () {
         this.employeeService = employeeService;
     }
     EmployeeListComponent.prototype.ngOnInit = function () {
-        this.employees = this.employeeService.getList();
+        var _this = this;
+        this.employeeService.GetList().subscribe(function (response) {
+            _this.employees = response;
+        }, function (error) {
+            console.log(error);
+        });
     };
     return EmployeeListComponent;
 }());
@@ -23,7 +28,6 @@ EmployeeListComponent = __decorate([
     core_1.Component({
         selector: 'employee-list',
         templateUrl: './app/employee.component.html',
-        providers: [employee_service_1.EmployeeService]
     }),
     __metadata("design:paramtypes", [employee_service_1.EmployeeService])
 ], EmployeeListComponent);

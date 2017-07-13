@@ -3,7 +3,6 @@ import { EmployeeService } from './services/employee.service';
 @Component({
     selector: 'employee-list',
     templateUrl: './app/employee.component.html',
-    providers: [EmployeeService]
 })
 export class EmployeeListComponent implements OnInit {
     public employees: any[];
@@ -11,7 +10,11 @@ export class EmployeeListComponent implements OnInit {
 
     }
     ngOnInit() {
-        this.employees = this.employeeService.getList();
+        this.employeeService.GetList().subscribe((response: any) => {
+            this.employees = response;
+        }, error => {
+            console.log(error)
+        });
     }
     
 }
