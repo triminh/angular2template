@@ -14,10 +14,13 @@ require("rxjs/add/operator/map");
 var EmployeeService = (function () {
     function EmployeeService(_http) {
         this._http = _http;
-        this.apiUrl = "http://596790d9c2944b0011620950.mockapi.io/employees";
+        this.apiUrl = "http://596790d9c2944b0011620950.mockapi.io/employees/";
     }
     EmployeeService.prototype.GetList = function () {
         return this._http.get(this.apiUrl).map(function (response) { return response.json(); });
+    };
+    EmployeeService.prototype.GetSingle = function (id) {
+        return this._http.get(this.apiUrl + id).map(function (response) { return response.json(); });
     };
     return EmployeeService;
 }());
